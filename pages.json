@@ -1,0 +1,79 @@
+{
+	"pages": [
+	    {
+	        "path": "pages/index/index",
+	        "style": {
+	            "navigationBarTitleText": ""
+	        },
+	        "needLogin": false
+	    },
+		
+	    {
+	        "path": "pages/home/home",
+	        "style": {
+	            "navigationBarTitleText": ""
+	        },
+	        "needLogin": true
+	    },
+		
+	    {
+	        "path": "pages/information/information",
+	        "style": {
+	            "navigationBarTitleText": "个人信息",
+	            "enablePullDownRefresh": false,
+	            "navigationBarBackgroundColor": "#55aae6"
+	        },
+	        "needLogin": true
+	    },
+	    {
+	        "path": "pages/AI/AI",
+	        "style": {
+	            "navigationBarTitleText": "成熟度AI检测",
+	            "enablePullDownRefresh": false,
+	            "navigationBarBackgroundColor": "#55aae6"
+	        },
+	        "needLogin": true
+	    },
+	    {
+	    	"path" : "pages/register/register",
+	    	"style" : 
+	    	{
+	    		"navigationBarTitleText" : ""
+	    	}
+	    },
+	    {
+	    	"path" : "pages/userforget/userforget",
+	    	"style" : 
+	    	{
+	    		"navigationBarTitleText" : ""
+	    	}
+	    },
+		{
+		      "path": "pages/videoPreview",
+		      "style": {
+		        "navigationBarTitleText": "视频预览",
+		        "enablePullDownRefresh": false
+		      }
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {
+	    "loginPage": "pages/index/index", // 登录页面路径
+	    "needLogin": [
+	        "pages/home/home",
+	        "pages/AI/AI",
+	        "pages/information/information",
+	        "pages/school/school"
+	    ],
+	    "resToLogin": true // 自动解析云对象及clientDB的错误码，如果是客户端token不正确或token过期则自动跳转配置的登录页面
+	},
+	"tabBar": {
+		"list": [
+		]
+	}
+}

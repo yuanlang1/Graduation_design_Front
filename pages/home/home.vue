@@ -5,13 +5,17 @@
       <view class="header-left">
         基于动作识别的课堂评估系统
       </view>
-      <view class="header-right">
-        <view class="fullscreen-btn" @click="toggleFullscreen" style="padding-right: 30rpx;">全屏</view>
-        <view class="user-info" @click="showUserModal">
-          <image :src="getUrl(userAvatar)" class="user-avatar"></image>
-          <text>{{ userName }}</text>
-        </view>
-      </view>
+     <view class="header-right">
+         <!-- 包裹全屏按钮和标识 -->
+         <view class="fullscreen-wrapper" @click="toggleFullscreen">
+           <view class="fullscreen-btn">全屏</view>
+           <image class="fullscreen-icon" src="/static/53f44cf101ad4befa8d28f3e84a78290.png" mode="widthFix" />
+         </view>
+         <view class="user-info" @click="showUserModal">
+           <image :src="getUrl(userAvatar)" class="user-avatar"></image>
+           <text>{{ userName }}</text>
+         </view>
+       </view>
     </view>
 
     <!-- 主体区域：左侧菜单 + 右侧内容 -->
@@ -433,6 +437,12 @@ export default {
   align-items: center;
   gap: 20rpx;
 }
+.fullscreen-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding-right: 30rpx;
+}
 .user-info {
   display: flex;
   align-items: center;
@@ -446,7 +456,8 @@ export default {
 }
 .fullscreen-btn {
   font-size: 28rpx;
-  cursor: pointer;
+  color: #ffffff;        /* 修改为白色 */
+  line-height: 80rpx;      /* 与header高度一致，确保垂直对齐 */
 }
 
 /* 主体区域 */
@@ -623,5 +634,11 @@ export default {
   font-size: 28rpx;
   background-color: #1890ff;
   color: #fff;
+}
+.fullscreen-icon{
+	width: 26rpx; /* 根据需要调整大小 */
+	height: 26rpx;
+	margin-left: 5rpx;
+	vertical-align: middle;
 }
 </style>

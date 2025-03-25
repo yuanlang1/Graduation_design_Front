@@ -10,7 +10,10 @@
           :range="classNameOptions"
           @change="handleSearchClassNameChange"
         >
-          <view class="picker-text">{{ searchParams.className || '请选择课堂名称' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.className || '请选择课堂名称' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -21,7 +24,10 @@
           :range="courseNameOptions"
           @change="handleSearchCourseNameChange"
         >
-          <view class="picker-text">{{ searchParams.courseName || '请选择课程名称' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.courseName || '请选择课程名称' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -42,7 +48,10 @@
           @change="handleSearchDtimeChange"
           @columnchange="handleSearchDtimeColumnChange"
         >
-          <view class="picker-text">{{ searchParams.dtime || '请选择上课时间' }}</view>
+          <view class="picker-text" style="width: 300rpx;">
+			{{ searchParams.dtime || '请选择上课时间' }}
+			<image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -53,7 +62,10 @@
           :range="locationOptions"
           @change="handleSearchLocationChange"
         >
-          <view class="picker-text">{{ searchParams.location || '请选择上课地址' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.location || '请选择上课地址' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -64,7 +76,10 @@
           :range="stageOptions"
           @change="handleSearchStageChange"
         >
-          <view class="picker-text">{{ searchParams.stage || '请选择上课节数' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.stage || '请选择上课节数' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <button type="primary" @click="fetchClassrooms" style="margin-left: 10rpx; margin-right: 20rpx;">查询</button>
@@ -105,6 +120,7 @@
         <text class="table-td" style="flex: 1;">{{ item.estimate }}</text>
         <view class="table-td" style="flex: 1;">
           <button type="warn" size="mini" @click="deleteClassroom(item.id)">删除</button>
+		  <button type="primary" size="mini" style="margin-left: 5rpx;" @click="jumpToPage(item)">跳转</button>
         </view>
       </view>
       <view v-if="classroomList.length === 0" class="no-data">暂无数据</view>
@@ -119,7 +135,7 @@
         </view>
         <view class="modal-body">
           <view class="form-item">
-            <text>课堂数据：</text>
+            <text>课堂视频：</text>
             <view v-if="courseForm.previewMedia" class="media-preview">
               <image
                 v-if="courseForm.mediaType === 'image'"
@@ -138,7 +154,6 @@
               <text class="remove-btn" @click="removeMedia">×</text>
             </view>
             <view v-else class="media-buttons">
-              <button type="primary" size="mini" @click="chooseImage">上传图片</button>
               <button type="primary" size="mini" style="margin-left: 20rpx;" @click="chooseVideo">上传视频</button>
             </view>
           </view>
@@ -150,7 +165,10 @@
               :range="classNameOptions"
               @change="handleFormClassNameChange"
             >
-              <view class="picker-text">{{ courseForm.className || '请选择课堂名称' }}</view>
+              <view class="picker-text">
+			  {{ courseForm.className || '请选择课堂名称' }}
+			  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -161,7 +179,10 @@
               :range="courseNameOptions"
               @change="handleFormCourseNameChange"
             >
-              <view class="picker-text">{{ courseForm.courseName || '请选择课程名称' }}</view>
+              <view class="picker-text">
+			  {{ courseForm.courseName || '请选择课程名称' }}
+			  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -181,7 +202,10 @@
               @change="handleFormDtimeChange"
               @columnchange="handleFormDtimeColumnChange"
             >
-              <view class="picker-text">{{ formatDate(courseForm.dtime) || '请选择上课时间' }}</view>
+              <view class="picker-text" style="width: 300rpx;">
+			  {{ formatDate(courseForm.dtime) || '请选择上课时间' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
         </view>
@@ -304,8 +328,15 @@ export default {
       const extension = path.split('.').pop().toLowerCase();
       const isImage = ['jpg', 'jpeg', 'png'].includes(extension);
       const isVideo = ['mp4', 'avi', 'mov'].includes(extension);
-      if (!isImage && !isVideo) return ''; // 未知类型不处理
-      return `http://127.0.0.1:8000/static/${type}/${path.replace(/^\//, '')}`;
+      if (!isImage && !isVideo) return ''; 
+	  if(type === 'rawpic'){
+	    console.log(`http://127.0.0.1:8000/static/${type}/${path.replace(/^\//, '')}`);
+		return `http://127.0.0.1:8000/static/${type}/${path.replace(/^\//, '')}`;
+	  }
+	  else if(type === 'resultpic'){
+	    console.log(`http://127.0.0.1:8000/static/${type}${path}`);
+	    return `http://127.0.0.1:8000/static/${type}${path}`
+	  }
     },
 
     // 预览媒体（图片或视频）
@@ -343,8 +374,10 @@ export default {
             detect_time: item.detect_time || '',
             estimate: item.estimate || '0.0',
             rawpic: item.rawpic || '',
-            resultpic: item.resultpic || ''
+            resultpic: item.resultpic || '',
+			result_json: item.result_json
           }))
+		  console.log(classroomList)
           this.initializeTeacherNameOptions()
         } else {
           uni.showToast({ title: '加载课堂失败', icon: 'none' })
@@ -381,7 +414,8 @@ export default {
             detect_time: item.detect_time || '',
             estimate: item.estimate || '0.0',
             rawpic: item.rawpic || '',
-            resultpic: item.resultpic || ''
+            resultpic: item.resultpic || '',
+			result_json: item.result_json || ''
           }))
         } else {
           uni.showToast({ title: '查询课堂失败', icon: 'none' })
@@ -673,6 +707,32 @@ export default {
       }
       return 'unknown'; // 未知类型
     },
+	
+	 // 轮询任务状态
+	  pollTaskStatus(taskId) {
+		const interval = setInterval(async () => {
+		  try {
+			const statusRes = await uni.request({
+			  url: `http://127.0.0.1:8000/Class_manage/task_status/${taskId}/`,
+			  method: 'GET'
+			});
+			if (statusRes.data.state === 'SUCCESS') {
+			  // 任务执行成功后，可更新课堂列表或提示用户检测完成
+			  uni.showToast({ title: '检测完成', icon: 'success' });
+			  // 此处可刷新课堂数据，或者直接更新该课堂的状态
+			  this.fetchAllClassrooms();
+			  clearInterval(interval);
+			} else if (statusRes.data.state === 'FAILURE') {
+			  uni.showToast({ title: '检测任务失败', icon: 'none' });
+			  clearInterval(interval);
+			}
+			// 如果状态是 PENDING 或 STARTED，则继续轮询
+		  } catch (error) {
+			console.error('轮询任务状态错误:', error);
+			clearInterval(interval);
+		  }
+		}, 3000); // 每 3 秒查询一次
+	},
 
     // 提交课堂
     async submitClassroom() {
@@ -699,19 +759,38 @@ export default {
           }
         })
         if (res.data.code === 200) {
-          uni.showToast({ title: this.courseForm.id ? '修改成功' : '添加成功', icon: 'success' })
-          this.closeModal()
-          this.fetchAllClassrooms()
-        } else if (res.data.code === 404) {
-          uni.showToast({ title: this.courseForm.id ? '修改失败' : '没有添加该课程', icon: 'none' })
+         const taskId = res.data.task_id;
+           uni.showToast({ title: '任务已提交', icon: 'success' });
+		   console.log("id:", res.data.task_id)
+           // 开启轮询查询任务状态
+           this.pollTaskStatus(taskId);
         }
 		else {
-		  uni.showToast({ title: this.courseForm.id ? '修改失败' : '添加失败', icon: 'none' })
+		   uni.showToast({ title: '添加失败', icon: 'none' });
 		}
       } catch (error) {
         uni.showToast({ title: '请求失败，请检查网络', icon: 'none' })
       }
     },
+	jumpToPage(item) {
+		const dataToSend = {
+			courseName: item.course_name,    
+			courseTime: item.dtime,            
+			courseTeacher: item.teacher_name, 
+			classTeacher: item.class_name,
+			class_socre: item.estimate,
+			rawpic: item.rawpic,               
+			resultpic: item.resultpic,         
+			jsonPath: item.result_json          
+		}
+		console.log(dataToSend)
+		uni.navigateTo({
+			url: '/pages/components/Feature1', 
+			success: (res) => {
+			  res.eventChannel.emit('acceptDataFromOpenerPage', dataToSend);
+			}
+		})
+	},
 
     // 关闭弹窗
     closeModal() {
@@ -894,16 +973,17 @@ button {
 }
 
 .picker-text {
-  width: 320rpx;
-  height: 40rpx;
-  line-height: 40rpx;
-  padding: 0 10rpx;
-  border: 1rpx solid #eee;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-  color: #333;
-  background-color: #fff;
-  cursor: pointer;
+   position: relative; /* 设置为相对定位 */
+   width: 240rpx;
+   height: 40rpx;
+   line-height: 40rpx;
+   padding: 0 30rpx 0 10rpx; /* 右侧留出足够空间放置图标 */
+   border: 1rpx solid #eee;
+   border-radius: 4rpx;
+   font-size: 28rpx;
+   color: #333;
+   background-color: #fff;
+   cursor: pointer;
 }
 
 .media-preview {
@@ -964,5 +1044,22 @@ button {
   height: 40rpx;
   line-height: 40rpx;
   font-size: 28rpx;
+}
+/* 新增下拉标识样式 */
+.picker-arrow {
+  position: absolute;
+  right: 10rpx; /* 图标距离容器右侧10rpx */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rpx;
+  height: 20rpx;
+}
+.picker-arrow2 {
+  position: absolute;
+  right: 10rpx; /* 图标距离容器右侧10rpx */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rpx;
+  height: 20rpx;
 }
 </style>

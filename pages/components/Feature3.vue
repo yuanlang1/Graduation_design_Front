@@ -19,7 +19,10 @@
           :range="['男', '女']"
           @change="handleSearchGenderChange"
         >
-          <view class="picker-text">{{ searchParams.teacherGender || '请选择性别' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.teacherGender || '请选择性别' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -30,7 +33,10 @@
           :range="['任课教师', '班主任', '教导主任', '年级主任', '德育主任', '教务主任', '副校长', '校长', '无']"
           @change="handleSearchPositionChange"
         >
-          <view class="picker-text">{{ searchParams.teacherPosition || '请选择职务' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.teacherPosition || '请选择职务' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -41,7 +47,10 @@
           :range="['三级教师', '二级教师', '一级教师', '高级教师', '正高级教师']"
           @change="handleSearchTitleChange"
         >
-          <view class="picker-text">{{ searchParams.teacherTitle || '请选择职称' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.teacherTitle || '请选择职称' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -52,7 +61,10 @@
           :range="['小学', '高中', '本科', '硕士', '博士', '博士后']"
           @change="handleSearchEducationChange"
         >
-          <view class="picker-text">{{ searchParams.teacherEducation || '请选择教育程度' }}</view>
+          <view class="picker-text2">
+		  {{ searchParams.teacherEducation || '请选择教育程度' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -63,7 +75,10 @@
           :range="['数学课', '语文课', '英语课', '物理课', '生物课', '化学课', '音乐课', '体育课', '历史课', '信息技术课']"
           @change="handleSearchCourseNameChange"
         >
-          <view class="picker-text">{{ searchParams.courseName || '请选择课程名称' }}</view>
+          <view class="picker-text2">
+		  {{ searchParams.courseName || '请选择课程名称' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -74,7 +89,10 @@
           :range="ageOptions"
           @change="handleSearchAgeChange"
         >
-          <view class="picker-text">{{ searchParams.teacherAge || '请选择年龄' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.teacherAge || '请选择年龄' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <button type="primary" @click="fetchTeachers" style="margin-left: 10rpx; margin-right: 20rpx;">查询</button>
@@ -133,7 +151,10 @@
               :range="['男', '女']"
               @change="handleFormGenderChange"
             >
-              <view class="picker-text">{{ teacherForm.gender || '请选择性别' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ teacherForm.gender || '请选择性别' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -144,7 +165,10 @@
               :range="['任课教师', '班主任', '教导主任', '年级主任', '德育主任', '教务主任', '副校长', '校长', '无']"
               @change="handleFormPositionChange"
             >
-              <view class="picker-text">{{ teacherForm.position || '请选择职务' }}</view>
+              <view class="picker-text"  style="width: 250rpx;">
+			  {{ teacherForm.position || '请选择职务' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -155,7 +179,10 @@
               :range="['三级教师', '二级教师', '一级教师', '高级教师', '正高级教师']"
               @change="handleFormTitleChange"
             >
-              <view class="picker-text">{{ teacherForm.title || '请选择职称' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ teacherForm.title || '请选择职称' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -166,7 +193,10 @@
               :range="['小学', '高中', '本科', '硕士', '博士', '博士后']"
               @change="handleFormEducationChange"
             >
-              <view class="picker-text">{{ teacherForm.education || '请选择教育程度' }}</view>
+              <view class="picker-text2" style="width: 250rpx;">
+			  {{ teacherForm.education || '请选择教育程度' }}
+			  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -177,7 +207,10 @@
               :range="['数学课', '语文课', '英语课', '物理课', '生物课', '化学课', '音乐课', '体育课', '历史课', '信息技术课']"
               @change="handleFormCourseNameChange"
             >
-              <view class="picker-text">{{ teacherForm.courseName || '请选择课程名称' }}</view>
+              <view class="picker-text2"  style="width: 250rpx;">
+			  {{ teacherForm.courseName || '请选择课程名称' }}
+			  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -188,7 +221,10 @@
               :range="ageOptions"
               @change="handleFormAgeChange"
             >
-              <view class="picker-text">{{ teacherForm.age || '请选择年龄' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ teacherForm.age || '请选择年龄' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
         </view>
@@ -561,16 +597,30 @@ export default {
 }
 
 .picker-text {
-  width: 210rpx; /* 调整 picker 宽度，与输入框一致 */
-  height: 40rpx;
-  line-height: 40rpx;
-  padding: 0 10rpx;
-  border: 1rpx solid #eee;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-  color: #333;
-  background-color: #fff;
-  cursor: pointer;
+   position: relative; /* 设置为相对定位 */
+   width: 210rpx;
+   height: 40rpx;
+   line-height: 40rpx;
+   padding: 0 30rpx 0 10rpx; /* 右侧留出足够空间放置图标 */
+   border: 1rpx solid #eee;
+   border-radius: 4rpx;
+   font-size: 28rpx;
+   color: #333;
+   background-color: #fff;
+   cursor: pointer;
+}
+.picker-text2 {
+   position: relative; /* 设置为相对定位 */
+   width: 210rpx;
+   height: 40rpx;
+   line-height: 40rpx;
+   padding: 0 30rpx 0 10rpx; /* 右侧留出足够空间放置图标 */
+   border: 1rpx solid #eee;
+   border-radius: 4rpx;
+   font-size: 28rpx;
+   color: #333;
+   background-color: #fff;
+   cursor: pointer;
 }
 
 button {
@@ -695,5 +745,21 @@ button {
   height: 40rpx;
   line-height: 40rpx;
   font-size: 28rpx;
+}
+.picker-arrow {
+  position: absolute;
+  right: 10rpx; /* 图标距离容器右侧10rpx */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rpx;
+  height: 20rpx;
+}
+.picker-arrow2 {
+  position: absolute;
+  right: 10rpx; /* 图标距离容器右侧10rpx */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rpx;
+  height: 20rpx;
 }
 </style>

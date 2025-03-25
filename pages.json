@@ -54,6 +54,12 @@
 		        "navigationBarTitleText": "视频预览",
 		        "enablePullDownRefresh": false
 		      }
+		},
+		{
+		  "path": "pages/components/Feature1",
+		  "style": {
+		    "navigationBarTitleText": ""
+		  }
 		}
 	],
 	"globalStyle": {

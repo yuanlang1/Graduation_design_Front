@@ -10,7 +10,10 @@
           :range="courseNameOptions"
           @change="handleSearchCourseNameChange"
         >
-          <view class="picker-text">{{ searchParams.courseName || '请选择课程名称' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.courseName || '请选择课程名称' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -21,7 +24,10 @@
           :range="classNameOptions"
           @change="handleSearchClassNameChange"
         >
-          <view class="picker-text">{{ searchParams.className || '请选择课堂名称' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.className || '请选择课堂名称' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -41,7 +47,10 @@
           :range="stageOptions"
           @change="handleSearchStageChange"
         >
-          <view class="picker-text">{{ searchParams.stage || '请选择上课节数' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.stage || '请选择上课节数' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -52,7 +61,10 @@
           :range="locationOptions"
           @change="handleSearchLocationChange"
         >
-          <view class="picker-text">{{ searchParams.location || '请选择上课地址' }}</view>
+          <view class="picker-text">
+		  {{ searchParams.location || '请选择上课地址' }}
+		  <image class="picker-arrow" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <view class="search-item">
@@ -64,7 +76,10 @@
           @change="handleSearchDtimeChange"
           @columnchange="handleSearchDtimeColumnChange"
         >
-          <view class="picker-text">{{ searchParams.dtime || '请选择上课时间' }}</view>
+          <view class="picker-text" style="width: 310rpx;">
+		  {{ searchParams.dtime || '请选择上课时间' }}
+		  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+		  </view>
         </picker>
       </view>
       <button type="primary" @click="fetchCourses" style="margin-left: 10rpx; margin-right: 20rpx;">查询</button>
@@ -113,7 +128,10 @@
               :range="classNameOptions"
               @change="handleFormClassNameChange"
             >
-              <view class="picker-text">{{ courseForm.className || '请选择课堂名称' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ courseForm.className || '请选择课堂名称' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -124,7 +142,10 @@
               :range="courseNameOptions"
               @change="handleFormCourseNameChange"
             >
-              <view class="picker-text">{{ courseForm.courseName || '请选择课程名称' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ courseForm.courseName || '请选择课程名称' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -144,7 +165,10 @@
               @change="handleFormDtimeChange"
               @columnchange="handleFormDtimeColumnChange"
             >
-              <view class="picker-text">{{ formatDate(courseForm.dtime) || '请选择上课时间' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ formatDate(courseForm.dtime) || '请选择上课时间' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -155,7 +179,10 @@
               :range="locationOptions"
               @change="handleFormLocationChange"
             >
-              <view class="picker-text">{{ courseForm.location || '请选择上课地址' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ courseForm.location || '请选择上课地址' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
           <view class="form-item">
@@ -166,7 +193,10 @@
               :range="stageOptions"
               @change="handleFormStageChange"
             >
-              <view class="picker-text">{{ courseForm.stage || '请选择上课节数' }}</view>
+              <view class="picker-text" style="width: 250rpx;">
+			  {{ courseForm.stage || '请选择上课节数' }}
+			  <image class="picker-arrow2" src="/static/6723913f80304fc9a7bafc70d4dd9bd8.png" mode="widthFix" />
+			  </view>
             </picker>
           </view>
         </view>
@@ -765,6 +795,7 @@ button {
 .form-item {
   display: flex;
   align-items: center;
+  margin-bottom: 20rpx;
 }
 
 .form-item text {
@@ -784,16 +815,17 @@ button {
 }
 
 .picker-text {
-  width: 320rpx; /* 保持 picker 宽度 */
-  height: 40rpx;
-  line-height: 40rpx;
-  padding: 0 10rpx;
-  border: 1rpx solid #eee;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-  color: #333;
-  background-color: #fff;
-  cursor: pointer;
+   position: relative; /* 设置为相对定位 */
+   width: 210rpx;
+   height: 40rpx;
+   line-height: 40rpx;
+   padding: 0 30rpx 0 10rpx; /* 右侧留出足够空间放置图标 */
+   border: 1rpx solid #eee;
+   border-radius: 4rpx;
+   font-size: 28rpx;
+   color: #333;
+   background-color: #fff;
+   cursor: pointer;
 }
 
 .modal-footer {
@@ -809,5 +841,21 @@ button {
   height: 40rpx;
   line-height: 40rpx;
   font-size: 28rpx;
+}
+.picker-arrow {
+  position: absolute;
+  right: 10rpx; /* 图标距离容器右侧10rpx */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rpx;
+  height: 20rpx;
+}
+.picker-arrow2 {
+  position: absolute;
+  right: 10rpx; /* 图标距离容器右侧10rpx */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rpx;
+  height: 20rpx;
 }
 </style>

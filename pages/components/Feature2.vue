@@ -731,7 +731,7 @@ export default {
 			console.error('轮询任务状态错误:', error);
 			clearInterval(interval);
 		  }
-		}, 3000); // 每 3 秒查询一次
+		}, 60000); // 每 3 秒查询一次
 	},
 
     // 提交课堂
@@ -764,6 +764,7 @@ export default {
 		   console.log("id:", res.data.task_id)
            // 开启轮询查询任务状态
            this.pollTaskStatus(taskId);
+		   this.closeModal() ;
         }
 		else {
 		   uni.showToast({ title: '添加失败', icon: 'none' });
